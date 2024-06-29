@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+  main:
+    build: .
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: "host"
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    tty: true
+    
