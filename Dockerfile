@@ -34,7 +34,9 @@ RUN apt-get update \
 
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+WORKDIR /home/ros/ws/
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/ros/.bashrc
 
