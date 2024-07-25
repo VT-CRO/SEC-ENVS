@@ -1,7 +1,8 @@
-version: '2'
+version: '3'
 services:
 
   main:
+    image: vt-cro/ros-env
     build: .
     volumes:
      - $PWD/src:/home/ros/ws
