@@ -1,9 +1,12 @@
-version: '3'
+# networks:
+#   ros:
+#     driver: bridge
+
 services:
 
   main:
     image: vt-cro/ros-env
-    build: .
+    build: .  
     volumes:
      - $PWD/src:/home/ros/ws
      - /tmp/.X11-unix:/tmp/.X11-unix:rw
@@ -12,4 +15,35 @@ services:
      - DISPLAY=$DISPLAY
     stdin_open: true
     tty: true
+    restart: always
+    # networks:
+    #   - ros
+
+  rqt:
+    image: vt-cro/ros-env
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    network_mode: "host"
+    tty: true
+    restart: always
+    command: stdbuf -o L rqt
+
+  gazebo:
+    image: vt-cro/ros-env
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    network_mode: "host"
+    tty: true
+    restart: always
+    command: stdbuf -o L gz sim
+
+   
     

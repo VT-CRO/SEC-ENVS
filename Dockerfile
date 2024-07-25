@@ -36,6 +36,8 @@ COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
 
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/ros/.bashrc
+
 CMD ["bash"]
 
 USER $USERNAME

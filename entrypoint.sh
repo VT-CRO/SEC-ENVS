@@ -9,3 +9,4 @@ ulimit -n 1024
 echo "Provided arguments: $@"
 
 exec "$@"
+
