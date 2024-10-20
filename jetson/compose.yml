@@ -19,7 +19,7 @@ services:
     # networks:
     #   - ros
 
-  rqt:
+  rviz:
     image: vt-cro/ros-env
     volumes:
      - $PWD/src:/home/ros/ws
@@ -30,7 +30,7 @@ services:
     network_mode: "host"
     tty: true
     restart: always
-    command: stdbuf -o L rqt
+    command: stdbuf -o L rviz2
 
   gazebo:
     image: vt-cro/ros-env
@@ -43,7 +43,7 @@ services:
     network_mode: "host"
     tty: true
     restart: always
-    command: stdbuf -o L gz sim
+    # command: stdbuf -o L gazebo
 
    
     
