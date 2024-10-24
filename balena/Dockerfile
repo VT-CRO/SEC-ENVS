@@ -1,4 +1,4 @@
-FROM balenalib/aarch64-ubuntu:focal
+FROM balenalib/aarch64-ubuntu:jammy
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Packages
