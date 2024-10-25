@@ -29,13 +29,13 @@ RUN apt-get update  \
 # Install most ROS dependencies
 RUN apt-get update \
   && apt-get install -y ros-${ROS_DISTRO}-gazebo-ros-pkgs \
-    ros-${ROS_DISTRO}-xacro \
-    ros-${ROS_DISTRO}-joint-state-publisher-gui \
-    ros-${ROS_DISTRO}-image-transport-plugins \
-    ros-${ROS_DISTRO}-rqt-image-view \
-    ros-${ROS_DISTRO}-ros2-control \
-    ros-${ROS_DISTRO}-ros2-controllers \
-    ros-${ROS_DISTRO}-gazebo-ros2-control
+  ros-${ROS_DISTRO}-xacro \
+  ros-${ROS_DISTRO}-joint-state-publisher-gui \
+  ros-${ROS_DISTRO}-image-transport-plugins \
+  ros-${ROS_DISTRO}-rqt-image-view \
+  ros-${ROS_DISTRO}-ros2-control \
+  ros-${ROS_DISTRO}-ros2-controllers \
+  ros-${ROS_DISTRO}-gazebo-ros2-control
 
 # Install behavior tree
 RUN apt-get update && apt-get install -y \
@@ -57,11 +57,15 @@ RUN git clone https://github.com/BehaviorTree/BehaviorTree.CPP.git && \
   cmake .. && \
   make && make install
 
+RUN apt-get install -y ros-humble-realsense2-camera
+
+
 RUN apt-get update \
   && apt-get install -y sudo \
   && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
   && chmod 0440 /etc/sudoers.d/$USERNAME \
   && rm -rf /var/lib/apt/lists/*
+
 
 COPY entrypoint.sh /entrypoint.sh
 
