@@ -1,0 +1,26 @@
+{
+  "name": "VTCRO Environment",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/home/vtcro/dev",
+  "workspaceFolder": "/home/vtcro/dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "platformio.platformio-ide",
+        "ms-vscode.cpptools-extension-pack",
+        "cschlosser.doxdocgen"
+      ]
+    }
+  },
+  "bindMounts": [
+    "source=/dev/bus/usb,target=/dev/bus/usb",
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix"
+  ],
+  "containerEnv": {
+    "DISPLAY": "unix:0"
+  },
+  "runArgs": ["--privileged", "--net=host"]
+}
