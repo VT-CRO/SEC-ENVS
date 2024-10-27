@@ -1,0 +1,49 @@
+# networks:
+#   ros:
+#     driver: bridge
+
+services:
+
+  main:
+    image: vt-cro/ros-env
+    build: .  
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: "host"
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    tty: true
+    restart: always
+    # networks:
+    #   - ros
+
+  rviz:
+    image: vt-cro/ros-env
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    network_mode: "host"
+    tty: true
+    restart: always
+    command: stdbuf -o L rviz2
+
+  gazebo:
+    image: vt-cro/ros-env
+    volumes:
+     - $PWD/src:/home/ros/ws
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment: 
+     - DISPLAY=$DISPLAY
+    stdin_open: true
+    network_mode: "host"
+    tty: true
+    restart: always
+    # command: stdbuf -o L gazebo
+
+   
+    
