@@ -57,27 +57,30 @@ RUN apt install -y python3-colcon-common-extensions \
 
 RUN pip install rosdep
 
-RUN mkdir src/
+# RUN mkdir src/
 
-WORKDIR /ws/src
+# WORKDIR /ws/src
 
-#this can be replaced with Jayson's source later
-RUN git clone https://github.com/christianrauch/apriltag_ros
+# #this can be replaced with Jayson's source later
+# RUN git clone https://github.com/christianrauch/apriltag_ros
 
-WORKDIR /ws
+# WORKDIR /ws
 
-RUN rosdep init
+# RUN rosdep init
 
-RUN rosdep update
+# RUN rosdep update
 
-RUN rosdep install -i --from-path src --rosdistro humble -y
+# RUN rosdep install -i --from-path src --rosdistro humble -y
 
-RUN . /opt/ros/humble/setup.sh && \
-    colcon build
+# RUN . /opt/ros/humble/setup.sh && \
+#     colcon build
 
 
 #RUN colcon build
-RUN echo "source install/setup.bash" >> ~/.bashrc
+
+RUN apt-get install nano
+
+#RUN echo "source install/setup.bash" >> ~/.bashrc
 
 
 COPY start.sh start.sh
