@@ -37,4 +37,4 @@ colcon build --package-select behaviortree_ros2
 colcon build
 ```
 
-Now source the workspace again, and the workspace is ready to use.
+Now source the workspace again, and the workspace is ready to use. Make sure to run `source /usr/share/gazebo/setup.sh` before starting Gazebo.
