@@ -70,8 +70,8 @@ WORKDIR /home/ros/ws/
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/ros/.bashrc
+RUN echo "source /usr/share/gazebo/setup.bash" >> /home/ros/.bashrc
 
 CMD ["bash"]
 
 USER $USERNAME
-
