@@ -75,4 +75,3 @@ RUN echo "source /usr/share/gazebo/setup.bash" >> /home/ros/.bashrc
 CMD ["bash"]
 
 USER $USERNAME
-
