@@ -47,6 +47,24 @@ Before running the container, make sure to run the command `xhost +local:` on yo
 Finally, you can run the container by running `launch.sh` shell script if you have a gpu and the `launch_no_gpu.sh` if no gpu is present in your system
 Place your workspace in `./src/` and you will be able to access it within the container at `/home/ros/ws/`.
 
+# How to Build Workspace
+Navigate to the workspace (`/home/ros/ws`) and run the following commands to install all required dependencies for the ROS workspace:
+
+```
+sudo apt update
+source install/setup.bash
+rosdep --install-from-paths src -y --ignore-src
+```
+
+Now build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+```
+colcon build --package-select btcpp_ros2_interfaces
+colcon build --package-select behaviortree_ros2
+colcon build
+```
+
+Now source the workspace again, and the workspace is ready to use.
+
 # Tips for Troubleshooting
 
 When using `colon build' if you get and a permissions error do the following:
