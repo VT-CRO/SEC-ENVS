@@ -26,7 +26,9 @@ RUN apt-get update \
   ros-${ROS_DISTRO}-image-transport-plugins \
   ros-${ROS_DISTRO}-rqt-image-view \
   ros-${ROS_DISTRO}-ros2-control \
-  ros-${ROS_DISTRO}-gz-ros2-control
+  ros-${ROS_DISTRO}-gz-ros2-control \
+  ros-${ROS_DISTRO}-navigation2 \
+  ros-${ROS_DISTRO}-nav2-bringup
 
 # Install behavior tree
 RUN apt-get update && apt-get install -y \
@@ -55,9 +57,10 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc
-RUN echo "source /usr/share/gazebo/setup.bash" >> /root/.bashrc
 RUN echo "export LIBGL_ALWAYS_SOFTWARE=1" >> /root/.bashrc
 RUN echo "export MESA_LOADER_DRIVER_OVERRIDE=llvmpipe" >> /root/.bashrc
+
+WORKDIR /root/ws
 
 CMD ["bash"]
 
