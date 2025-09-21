@@ -1,12 +1,12 @@
 ## VTCRO-SEC-Jetson
 
 This is a development environment for creating ROS applications. This environment includes GUI features for debugging and developing such as:
-- gazebo
-- rviz
+- Gazebo
+- Rviz
 
 # Prereqs 
 
-If on a windows computer install wsl ubuntu before continuing. 
+If on a Windows computer install WSL Ubuntu before continuing. 
 
 Before trying to use this workspace make sure you have the nvidia container toolkit installed and docker installed on your system.
 
@@ -33,8 +33,10 @@ sudo apt-get install -y nvidia-container-toolkit
 # How to Build
 
 Prerequisites:
-- Docker desktop
+- Docker Desktop
 - WSL (if windows)
+
+Note: The jetson has an ARM processor, so if you're trying to set up this environment on the jetson, you will need to use the Dockerfile in the balena directory.
 
 Build the image using
 
@@ -74,4 +76,4 @@ cd
 chmod 777 ws/
 ```
 
-then try again.
+Then try again.
