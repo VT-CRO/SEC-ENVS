@@ -58,18 +58,34 @@ source install/setup.bash
 rosdep --install-from-paths src -y --ignore-src
 ```
 
-Now build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+If the above doesn't work, try
 ```
-colcon build --package-select btcpp_ros2_interfaces
-colcon build --package-select behaviortree_ros2
-colcon build
+sudo apt update
+source /opt/ros/humble/setup.bash
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
 ```
 
-Now source the workspace again, and the workspace is ready to use.
+If there is no ```/src``` directory, make one. Then run those commands again.
+
+Clone the SEC-CRO-JETSON repository into ```/ws```
+```
+git clone https://github.com/VT-CRO/SEC-CRO-JETSON-2026.git
+```
+
+Then navigate to the SEC-CRO-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+```
+colcon build --packages-select btcpp_ros2_interfaces
+colcon build --packages-select behaviortree_ros2
+colcon build
+```
+This will take a while.
+
+Now source the workspace again, and is is ready to use.
 
 # Tips for Troubleshooting
 
-When using `colon build' if you get and a permissions error do the following:
+When using `colon build' if you get a permissions error, do the following:
 ```
 cd 
 
