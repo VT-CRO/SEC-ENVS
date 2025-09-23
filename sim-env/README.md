@@ -55,7 +55,7 @@ Navigate to the workspace (`/home/ros/ws`) and run the following commands to ins
 ```
 sudo apt update
 source install/setup.bash
-rosdep --install-from-paths src -y --ignore-src
+rosdep install --from-paths src -y --ignore-src
 ```
 
 If the above doesn't work, try
