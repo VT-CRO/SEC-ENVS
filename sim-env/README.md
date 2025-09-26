@@ -53,9 +53,10 @@ Place your workspace in `./src/` and you will be able to access it within the co
 Navigate to the workspace (`/home/ros/ws`) and run the following commands to install all required dependencies for the ROS workspace:
 
 ```
+source /opt/ros/humble/setup.bash
 sudo apt update
 source install/setup.bash
-rosdep install --from-paths src -y --ignore-src
+rosdep install --from-paths src --ignore-src -r -y
 ```
 
 If the above doesn't work, try
@@ -75,8 +76,8 @@ git clone https://github.com/VT-CRO/SEC-CRO-JETSON-2026.git
 
 Then navigate to the SEC-CRO-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
 ```
-colcon build --packages-select btcpp_ros2_interfaces
-colcon build --packages-select behaviortree_ros2
+colcon build --packages-select btcpp_ros2_interfaces behaviortree_ros2 crobot_msgs
+source install/setup.bash
 colcon build
 ```
 This will take a while.
