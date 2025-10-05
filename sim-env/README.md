@@ -71,7 +71,7 @@ If there is no ```/src``` directory, make one. Then run those commands again.
 
 Clone the SEC-CRO-JETSON repository into ```/ws```
 ```
-git clone https://github.com/VT-CRO/SEC-CRO-JETSON-2026.git
+git clone https://github.com/VT-CRO/SEC-CRO-JETSON.git
 ```
 
 Then navigate to the SEC-CRO-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
