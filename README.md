@@ -1,7 +1,7 @@
 # VTCRO-SEC Environments
 
-This repository contains software development environments used by the VTCRO SEC Team.
+This repository contains software development environments used by the VT CRO SoutheastCon Team.
 The following environments are contained within this repo:
 
-- embedded: environments for developing embedded/microcontroller software with VSCodes
-- jetson: environments for developing applications with ROS
+- Embedded: Environments for developing embedded/microcontroller software with VS Code
+- Jetson: Environments for developing applications with ROS

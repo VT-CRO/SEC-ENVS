@@ -1,12 +1,12 @@
 ## VTCRO-SEC-Jetson
 
 This is a development environment for creating ROS applications. This environment includes GUI features for debugging and developing such as:
-- gazebo
-- rviz
+- Gazebo
+- Rviz
 
 # Prereqs 
 
-If on a windows computer install wsl ubuntu before continuing. 
+If on a Windows computer install WSL Ubuntu before continuing. 
 
 Before trying to use this workspace make sure you have the nvidia container toolkit installed and docker installed on your system.
 
@@ -33,8 +33,10 @@ sudo apt-get install -y nvidia-container-toolkit
 # How to Build
 
 Prerequisites:
-- Docker desktop
+- Docker Desktop
 - WSL (if windows)
+
+Note: The jetson has an ARM processor, so if you're trying to set up this environment on the jetson, you will need to use the Dockerfile in the balena directory.
 
 Build the image using
 
@@ -51,27 +53,44 @@ Place your workspace in `./src/` and you will be able to access it within the co
 Navigate to the workspace (`/home/ros/ws`) and run the following commands to install all required dependencies for the ROS workspace:
 
 ```
+source /opt/ros/humble/setup.bash
 sudo apt update
 source install/setup.bash
-rosdep --install-from-paths src -y --ignore-src
+rosdep install --from-paths src --ignore-src -r -y
 ```
 
-Now build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+If the above doesn't work, try
 ```
-colcon build --package-select btcpp_ros2_interfaces
-colcon build --package-select behaviortree_ros2
+sudo apt update
+source /opt/ros/humble/setup.bash
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+If there is no ```/src``` directory, make one. Then run those commands again.
+
+Clone the SEC-CRO-JETSON repository into ```/ws```
+```
+git clone https://github.com/VT-CRO/SEC-CRO-JETSON.git
+```
+
+Then navigate to the SEC-CRO-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+```
+colcon build --packages-select btcpp_ros2_interfaces behaviortree_ros2 crobot_msgs
+source install/setup.bash
 colcon build
 ```
+This will take a while.
 
-Now source the workspace again, and the workspace is ready to use.
+Now source the workspace again, and is is ready to use.
 
 # Tips for Troubleshooting
 
-When using `colon build' if you get and a permissions error do the following:
+When using `colon build' if you get a permissions error, do the following:
 ```
 cd 
 
 chmod 777 ws/
 ```
 
-then try again.
+Then try again.
