@@ -16,7 +16,7 @@ sudo apt-get update
 sudo apt-get install -y nvidia-container-toolkit
 ```
 
-# Getting Started with SEC-CRO-JETSON Environment
+# Getting Started with SEC-NEW-JETSON Environment
 Install Docker [from here](https://docs.docker.com/desktop/setup/install/windows-install/) if on Windows.
 
 Or do the following
@@ -64,12 +64,12 @@ Place your workspace in `./src/` and you will be able to access it within the co
 # How to Build Workspace
 Navigate to the workspace (`/home/ros/ws`) and run the following commands to install all required dependencies for the ROS workspace:
 
-Clone the SEC-CRO-JETSON repository into ```/ws```
+Clone the SEC-NEW-JETSON repository into ```/ws```
 ```
-git clone https://github.com/VT-CRO/SEC-CRO-JETSON.git
+git clone https://github.com/VT-CRO/SEC-NEW-JETSON.git
 ```
 
-cd into SEC-CRO-JETSON
+cd into SEC-NEW-JETSON
 
 ```
 sudo apt update
@@ -85,7 +85,7 @@ rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-Then navigate to the SEC-CRO-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
+Then navigate to the SEC-NEW-JETSON directory you just cloned and build the workspace. To do so, you must ensure to build the packages in the following order. The commands are as follows:
 ```
 colcon build --packages-select btcpp_ros2_interfaces
 colcon build --packages-select behaviortree_ros2
@@ -103,5 +103,6 @@ cd
 
 chmod -R 777 ws/
 ```
+
 
 Then try again.
